@@ -13,7 +13,14 @@
 
 Rails.application.routes.draw do
 
+  get 'wellcome/index'
+
+  get 'register/start'
+
   resources :books
+  resources :drivers, only: [:create, :destroy]
+
+  post "/drivers/:id/uploads", to: "drivers#upload"
 
   # [START login]
   get "/login", to: redirect("/auth/google_oauth2")
@@ -32,6 +39,7 @@ Rails.application.routes.draw do
   # [START logout]
   get "/logout", to: "sessions#destroy"
   # [END logout]
+
 
   root "books#index"
 
