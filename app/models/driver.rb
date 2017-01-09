@@ -8,7 +8,7 @@ class Driver
                 :avatar_image, :car_license_image, :insurance_policy_image,
                 :car_plates_images, :driver_clabe, :diver_bank, :phone_uuid, :member_since
 
-  validates :id, :fist_name, :last_name, :cellphone, :email true
+  validates :fist_name, :last_name, :cellphone, :email, presence: true
 
   def self.dataset
     @dataset ||= Google::Cloud::Datastore.new(

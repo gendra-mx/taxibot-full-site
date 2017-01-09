@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookshelf - Ruby on Google Cloud Platform</title>
+    <meta charset="utf-8">
+    <meta name="viewset" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" %>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag  "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand">Bookshelf</div>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Books", root_path %></li>
+          <%# [START mine] %>
+          <% if logged_in? %>
+            <li><%= link_to "Mine", user_books_path %></li>
+          <% end %>
+          <%# [END mine] %>
+        </ul>
+        <p class="navbar-text navbar-right">
+          <%# [START user_profile] %>
+          <% if logged_in? %>
+            <% if current_user.image_url %>
+              <%= image_tag current_user.image_url, class: "img-circle", width: 24 %>
+            <% end %>
+            <span>
+              <%= current_user.name %> &nbsp;
+              <%# [START logout] %>
+              <%= link_to "(logout)", logout_path %>
+              <%# [END logout] %>
+            </span>
+          <%# [END user_profile] %>
+          <% else %>
+            <%# [START login] %>
+            <%= link_to "Login", login_path %>
+            <%# [END login] %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <% if flash.any? %>
+        <% flash.each do |type, message| %>
+          <div class="alert alert-<%= type %>"><%= message %></div>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

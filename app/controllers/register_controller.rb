@@ -1,4 +1,4 @@
 class RegisterController < ApplicationController
-  def start
+  def index
   end
 end

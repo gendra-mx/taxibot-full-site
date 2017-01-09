@@ -13,6 +13,17 @@
 
 Rails.application.routes.draw do
 
+  resources :drivers
+  get 'drivers/all'
+
+  get 'login/start'
+
+  get 'pasajeros', to: 'passengers#wellcome'
+
+  get 'ciudades', to: 'cities#all'
+
+  get 'conductores', to: 'drivers#new'
+
   get 'wellcome/index'
 
   get 'register/start'
@@ -23,7 +34,7 @@ Rails.application.routes.draw do
   post "/drivers/:id/uploads", to: "drivers#upload"
 
   # [START login]
-  get "/login", to: redirect("/auth/google_oauth2")
+  get "/login", to: 'login#start'
   # [END login]
 
   # [START sessions]
@@ -41,6 +52,6 @@ Rails.application.routes.draw do
   # [END logout]
 
 
-  root "books#index"
+  root "wellcome#index"
 
 end

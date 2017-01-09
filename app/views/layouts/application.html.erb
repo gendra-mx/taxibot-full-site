@@ -1,56 +1,166 @@
+
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-    <title>Bookshelf - Ruby on Google Cloud Platform</title>
-    <meta charset="utf-8">
-    <meta name="viewset" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" %>
-    <%= javascript_include_tag "application" %>
-    <%= stylesheet_link_tag "application" %>
-    <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Taxibot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+  <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+  <meta name="author" content="FREEHTML5.CO" />
+
+  <!-- 
+  //////////////////////////////////////////////////////
+
+  FREE HTML5 TEMPLATE 
+  DESIGNED & DEVELOPED by FREEHTML5.CO
+    
+  Website:    http://freehtml5.co/
+  Email:      info@freehtml5.co
+  Twitter:    http://twitter.com/fh5co
+  Facebook:     https://www.facebook.com/fh5co
+
+  //////////////////////////////////////////////////////
+   -->
+
+    <!-- Facebook and Twitter integration -->
+  <meta property="og:title" content=""/>
+  <meta property="og:image" content=""/>
+  <meta property="og:url" content=""/>
+  <meta property="og:site_name" content=""/>
+  <meta property="og:description" content=""/>
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:image" content="" />
+  <meta name="twitter:url" content="" />
+  <meta name="twitter:card" content="" />
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
+  
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="/assets/css/animate.css">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="/assets/css/icomoon.css">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.css">
+  <!-- Superfish -->
+  <link rel="stylesheet" href="/assets/css/superfish.css">
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+
+  <!-- Modernizr JS -->
+  <script src="/assets/js/modernizr-2.6.2.min.js"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
   </head>
   <body>
-    <div class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <div class="navbar-brand">Bookshelf</div>
+    <div id="fh5co-wrapper">
+    <div id="fh5co-page">
+    <div id="fh5co-header">
+      <header id="fh5co-header-section">
+        <div class="container">
+          <div class="nav-header">
+            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+            <h1 id="fh5co-logo"><a href="/">🚖 Taxi<b>Bot</b></a></h1>
+          <nav id="fh5co-menu-wrap" role="navigation">
+            <ul class="sf-menu" id="fh5co-primary-menu">
+              <li><a href="/ciudades">Ciudades</a></li>
+              <li><a href="/pasajeros">Pasajeros</a></li>
+              <li><a href="/conductores">Conductores</a></li>
+              <li><a href="/login">Inicia Sesion</a></li>
+            </ul>
+          </nav>
+          </div>
         </div>
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Books", root_path %></li>
-          <%# [START mine] %>
-          <% if logged_in? %>
-            <li><%= link_to "Mine", user_books_path %></li>
-          <% end %>
-          <%# [END mine] %>
-        </ul>
-        <p class="navbar-text navbar-right">
-          <%# [START user_profile] %>
-          <% if logged_in? %>
-            <% if current_user.image_url %>
-              <%= image_tag current_user.image_url, class: "img-circle", width: 24 %>
-            <% end %>
-            <span>
-              <%= current_user.name %> &nbsp;
-              <%# [START logout] %>
-              <%= link_to "(logout)", logout_path %>
-              <%# [END logout] %>
-            </span>
-          <%# [END user_profile] %>
-          <% else %>
-            <%# [START login] %>
-            <%= link_to "Login", login_path %>
-            <%# [END login] %>
-          <% end %>
-        </p>
+      </header>
+    </div>
+    
+    <%= yield %>
+
+    </div>
+    <footer>
+      <div id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <p>Copyright 2017<a href="#">  JEA SOLUTIONS</a>. Todos los derechos reservados.</p>
+            </div>
+            <div class="col-md-6">
+              <ul class="footer-menu">
+                <li><a href="#">Aviso de privacidad</a></li>
+                <li><a href="#">Protección de datos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Hecho en México 🇲🇽</a></li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <% if flash.any? %>
-        <% flash.each do |type, message| %>
-          <div class="alert alert-<%= type %>"><%= message %></div>
-        <% end %>
-      <% end %>
-      <%= yield %>
-    </div>
+    </footer>
+  
+
+  </div>
+  <!-- END fh5co-page -->
+
+  </div>
+  <!-- END fh5co-wrapper -->
+
+  <!-- jQuery -->
+
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="/assets/js/jquery.easing.1.3.js"></script>
+  <!-- Bootstrap -->
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+  <script src="/assets/js/jquery.waypoints.min.js"></script>
+  <!-- Superfish -->
+  <script src="/assets/js/hoverIntent.js"></script>
+  <script src="/assets/js/superfish.js"></script>
+
+  <!-- Main JS (Do not remove) -->
+  <script src="/assets/js/main.js"></script>
+  <script>
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: "1206480469428779",
+        xfbml: true,
+        version: "v2.6"
+      });
+
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) { return; }
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  </script>
+  <script>
+  setTimeout( function() {
+    FB.Event.subscribe('send_to_messenger', function(e) {
+    
+    });
+  }, 1000)
+
+
+</script>
   </body>
 </html>
+

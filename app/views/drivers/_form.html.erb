@@ -1,0 +1,36 @@
+<% if @driver.errors.any? %>
+  <div class="errors">
+    <% @driver.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"><%= message %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for(@driver) do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+          <%= f.text_field :fist_name, placeholder: "Nombre(s)", class: "form-control" %>
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :last_name, placeholder: "Apellidos(s)", class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.email_field :email, placeholder: "Correo Electrónico", class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+           <%= f.text_field :cellphone, placeholder: "Teléfono celular (10 dígitos)", class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <input type="submit" value="Continuar" class="btn btn-primary">
+          </div>
+        </div>
+<% end %>

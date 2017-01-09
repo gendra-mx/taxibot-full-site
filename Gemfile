@@ -26,6 +26,10 @@ gem "google-api-client", "~> 0.9"
 # [END google_api_client]
 gem "foreman"
 
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+
 group :production do
   gem "mysql2", "~> 0.3.0"
 end
